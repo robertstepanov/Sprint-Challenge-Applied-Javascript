@@ -25,10 +25,20 @@ axios
     console.log(response.data.topics);
     // let newTabList = Array.from(response.data.topics);
     // console.log(newTabList)
+
+    // -----------------  Empty Tabs ------------------>
+    // for (let i = 0; i < newTabList.length; i++) {
+    //   const newTab = newTabCreator(newTabList[i]);
+    //   const newTabs = document.querySelector(".topics");
+    //   newTabs.appendChild(newTab);
+    // }
     response.data.topics.forEach(item => {
       const newTab = newTabCreator(response.data);
       console.log(newTab);
       const newTabs = document.querySelector(".topics");
       newTabs.appendChild(newTab);
     });
+  })
+  .catch(error => {
+    console.log("Error:", error);
   });
