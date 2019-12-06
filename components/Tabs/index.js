@@ -8,39 +8,27 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-// const topic = response.data.topics;
-// const entryPoint = document.querySelector(".tab");
-// const tab = newTab(topic);
-// entryPoint.appendChild(tab);
+function newTabCreator(arg) {
+  const newTab = document.createElement("div");
 
-// .then(response => {
-//   console.log(response.data);
-//   response.data.forEach(item => {
-//     const entryPoint = document.querySelector(".tab");
-//     const tab = newTab(item);
-//     entryPoint.appendChild(newTopic);
-//   });
-// });
+  newTab.classList.add("tab");
 
-// const newTabCreator = topic => {
-//   const newTab = document.createElement("div");
+  newTab.textContent = arg.topics;
 
-//   newTab.classList.add("tab");
+  return newTab;
+}
 
-//   newTab.textContent = "topic here";
+axios
+  .get(`https://lambda-times-backend.herokuapp.com/topics/`)
 
-//   return newTab;
-// };
-
-// entryPoint = document.querySelector(".tab");
-
-// axios
-//   .get("https://lambda-times-backend.herokuapp.com/topics")
-
-//   .then(response => {
-//     console.log(response.data.topics);
-//     response.data.topics.forEach(item => {
-//       const newTab = newTabCreator(item);
-//       entryPoint.appendChild(newTab);
-//     });
-//   });
+  .then(response => {
+    console.log(response.data.topics);
+    // let newTabList = Array.from(response.data.topics);
+    // console.log(newTabList)
+    response.data.topics.forEach(item => {
+      const newTab = newTabCreator(response.data);
+      console.log(newTab);
+      const newTabs = document.querySelector(".topics");
+      newTabs.appendChild(newTab);
+    });
+  });
