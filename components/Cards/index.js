@@ -37,9 +37,12 @@ function articleCreator(arg) {
   imageContainer.appendChild(img);
   author.appendChild(name);
 
-  headline.textContent = arg;
-  img.src = "./assets/fido.jpg";
-  name.textContent = "What is going on?";
+  headline.textContent = arg[0];
+  img.src = arg[0];
+  name.textContent = arg[0];
+  // headline.textContent = arg;
+  // img.src = "./assets/fido.jpg";
+  // name.textContent = "What is going on?";
 
   return card;
 }
@@ -73,7 +76,7 @@ axios
         .get(`https://lambda-times-backend.herokuapp.com/articles`)
         .then(res => {
           // console.log(res.data.articles);
-          const card = articleCreator(infoValues);
+          const card = articleCreator(info[0]); //const card = articleCreator(info[0]);  Closer
           const cards = document.querySelector(".cards-container");
           cards.appendChild(card);
         });

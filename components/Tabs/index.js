@@ -14,7 +14,6 @@ function newTabCreator(arg) {
   newTab.classList.add("tab");
 
   newTab.textContent = arg.topics;
-  
 
   return newTab;
 }
