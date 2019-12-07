@@ -71,7 +71,7 @@ axios
     // console.log(infoValues);
     // console.log(info);
 
-    infoValues.forEach(user => {
+    infoValues.forEach(res => {
       axios
         .get(`https://lambda-times-backend.herokuapp.com/articles`)
         .then(res => {

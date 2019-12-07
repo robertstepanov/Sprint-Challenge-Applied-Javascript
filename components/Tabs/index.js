@@ -13,7 +13,7 @@ function newTabCreator(arg) {
 
   newTab.classList.add("tab");
 
-  newTab.textContent = arg.topics;
+  newTab.textContent = arg.topics[0];
 
   return newTab;
 }
@@ -31,7 +31,7 @@ axios
     //   const newTabs = document.querySelector(".topics");
     //   newTabs.appendChild(newTab);
     // }
-    response.data.topics.forEach(item => {
+    response.data.topics.forEach(resp => {
       const newTab = newTabCreator(response.data); //  const newTab = newTabCreator(item); displays empty tabs
       console.log(newTab);
       const newTabs = document.querySelector(".topics");
