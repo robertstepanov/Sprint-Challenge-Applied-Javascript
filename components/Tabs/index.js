@@ -22,22 +22,13 @@ axios
   .get(`https://lambda-times-backend.herokuapp.com/topics/`)
 
   .then(response => {
-    // let newTabList = Array.from(response.data.topics);
-    // console.log(newTabList);
-
-    // -----------------  Empty Tabs ------------------>
-    // for (let i = 0; i < newTabList.length; i++) {
-    //   const newTab = newTabCreator(newTabList[i]);
-    //   const newTabs = document.querySelector(".topics");
-    //   newTabs.appendChild(newTab);
-    // }
-    response.data.topics.forEach(resp => {
+    response.data.topics.forEach(item => {
       const newTab = newTabCreator(response.data); //  const newTab = newTabCreator(item); displays empty tabs
       console.log(newTab);
       const newTabs = document.querySelector(".topics");
       newTabs.appendChild(newTab);
     });
-  })
-  .catch(error => {
-    console.log("Error:", error);
   });
+// .catch(error => {
+//   console.log("Error:", error);
+// });
