@@ -14,6 +14,7 @@ function newTabCreator(arg) {
   newTab.classList.add("tab");
 
   newTab.textContent = arg.topics;
+  
 
   return newTab;
 }
@@ -22,9 +23,8 @@ axios
   .get(`https://lambda-times-backend.herokuapp.com/topics/`)
 
   .then(response => {
-    console.log(response.data.topics);
     // let newTabList = Array.from(response.data.topics);
-    // console.log(newTabList)
+    // console.log(newTabList);
 
     // -----------------  Empty Tabs ------------------>
     // for (let i = 0; i < newTabList.length; i++) {
@@ -33,7 +33,7 @@ axios
     //   newTabs.appendChild(newTab);
     // }
     response.data.topics.forEach(item => {
-      const newTab = newTabCreator(response.data);
+      const newTab = newTabCreator(response.data); //  const newTab = newTabCreator(item); displays empty tabs
       console.log(newTab);
       const newTabs = document.querySelector(".topics");
       newTabs.appendChild(newTab);
